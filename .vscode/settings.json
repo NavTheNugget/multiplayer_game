@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "window.h": "c",
+        "square.h": "c",
+        "sdl.h": "c"
+    }
+}

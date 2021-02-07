@@ -2,10 +2,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <SDL2/SDL.h>
+#include "headers/renderer.h"
 
-main() {
+int main() {
+    Renderer* renderer = malloc(sizeof(Renderer));
+
     SDL_Window* window = SDL_CreateWindow("My Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+    renderer->mRenderer = SDL_CreateRenderer(window, -1, 0);
     bool isRunning = true;
     SDL_Event event;
 
@@ -19,12 +22,12 @@ main() {
                 break;
         }
 
-        SDL_RenderClear(renderer);
+        clear(renderer);
 
-        SDL_RenderPresent(renderer);
+        draw(renderer);
     }
     SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
+    destroy(renderer);
     SDL_Quit();
     return 0;
 }
